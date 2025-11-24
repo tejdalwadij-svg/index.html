@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tej Dalwadi | ENGG 687 Personal Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Optional Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Premium light + black & gold palette */
+      --bg: #F8F8F8;
+      --bg-elevated: #FFFFFF;
+      --accent: #D4AF37;
+      --accent-soft: rgba(212, 175, 55, 0.16);
+      --accent-strong: #B8860B;
+      --text: #0F0F0F;
+      --muted: #6B7280;
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+      --radius-xl: 1.5rem;
+      --radius-lg: 1rem;
+      --radius-pill: 999px;
+      --transition-fast: 160ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #FFFFFF 0, #F8F8F8 55%, #E5E5E5 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        position: static;
+        height: auto;
+      }
+    }
+
+    aside {
+      border-right: 1px solid rgba(15, 23, 42, 0.12);
+      background:
+        radial-gradient(circle at top left, rgba(212, 175, 55, 0.4), transparent 55%),
+        linear-gradient(160deg, #121212 0, #1A1A1A 60%, #222222 100%);
+      padding: 1.5rem 1.75rem 2rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      backdrop-filter: blur(16px);
+      color: #F9FAFB;
+    }
+
+    main {
+      padding: 1.75rem clamp(1.5rem, 2.5vw, 2.5rem);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Sidebar content */
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(249, 250, 251, 0.22);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      font-size: 0.75rem;
+      color: #E5E7EB;
+      margin-bottom: 1rem;
+    }
+
+    .brand-pill span.dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.9);
+    }
+
+    .profile {
+      margin-bottom: 2rem;
+    }
+
+    .avatar-ring {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      padding: 5px;
+      background: conic-gradient(
+        from 210deg,
+        #D4AF37,
+        #F5E3A1,
+        #D4AF37,
+        #B8860B,
+        #D4AF37
+      );
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.8);
+    }
+
+  .avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+    .name {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin: 1.1rem 0 0.25rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #D1D5DB;
+    }
+
+    .tag-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(229, 231, 235, 0.4);
+      color: #E5E7EB;
+    }
+
+    .side-section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9CA3AF;
+      margin: 1.75rem 0 0.75rem;
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .toc li a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #D1D5DB;
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .toc li a span.index {
+      font-size: 0.75rem;
+      width: 1.25rem;
+      text-align: center;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(249, 250, 251, 0.5);
+      color: #E5E7EB;
+    }
+
+    .toc li a:hover {
+      background: rgba(0, 0, 0, 0.7);
+      color: #F9FAFB;
+      transform: translateX(2px);
+    }
+
+    .toc li a:hover span.index {
+      background: var(--accent-soft);
+      color: #111827;
+    }
+
+    .pill-note {
+      font-size: 0.75rem;
+      color: #D1D5DB;
+      padding: 0.6rem 0.85rem;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(243, 244, 246, 0.5);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .pill-note strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .cta-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(249, 250, 251, 0.35);
+      background: rgba(0, 0, 0, 0.6);
+      color: #F9FAFB;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn-primary {
+      border: none;
+      background: linear-gradient(135deg, #D4AF37, #F5E3A1);
+      color: #111827;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #F5E3A1, #D4AF37);
+    }
+
+    /* Main header */
+    .page-header {
+      margin-bottom: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-end;
+    }
+
+    .page-header-text h1 {
+      font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+      margin: 0 0 0.4rem;
+      letter-spacing: 0.03em;
+      color: #111827;
+    }
+
+    .page-header-text p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 38rem;
+    }
+
+    .page-header-highlight {
+      font-size: 0.8rem;
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      margin-bottom: 0.2rem;
+    }
+
+    .page-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .page-meta strong {
+      color: #111827;
+    }
+
+    /* Entry cards */
+    .entry-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .entry {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 1.4rem clamp(1.4rem, 2vw, 1.8rem);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .entry-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(260px, 1.3fr);
+      gap: 1.3rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 860px) {
+      .entry-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .entry-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .entry-title-group h2 {
+      font-size: 1.1rem;
+      margin: 0;
+      color: #111827;
+    }
+
+    .entry-title-group p {
+      margin: 0.25rem 0 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .entry-index {
+      min-width: 2rem;
+      height: 2rem;
+      border-radius: var(--radius-pill);
+      background: #F9FAFB;
+      border: 1px solid var(--accent-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #4B5563;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .entry-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-strong);
+    }
+
+    .entry-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .entry-text p {
+      margin: 0 0 0.8rem;
+    }
+
+    .entry-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-text ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .entry-text strong {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .entry-graphic {
+      background: #F9FAFB;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry-graphic-accent {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at -10% 0, rgba(212, 175, 55, 0.22), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    figure {
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      background: #E5E7EB;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 260px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 200ms ease-out, transform 200ms ease-out;
+      transform: scale(1.02);
+    }
+
+    figure img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    figcaption {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.7rem 0.5rem;
+      background: #F3F4F6;
+      border-top: 1px solid #E5E7EB;
+      color: #6B7280;
+    }
+
+    figcaption strong {
+      color: var(--accent-strong);
+    }
+
+    .entry-tags {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .entry-tag-pill {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      background: #FFFFFF;
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .hint strong {
+      color: var(--accent-strong);
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 1rem 0 0.25rem;
+      border-top: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
+    .footer-note span {
+      color: var(--accent-strong);
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside>
+      <div class="brand-pill">
+        <span class="dot"></span>
+        ENGG 687 · Personal Portfolio
+      </div>
+
+      <div class="profile">
+        <div class="avatar-ring">
+          <img src="images/profile.jpg" alt="Profile photo" class="avatar-inner">
+        </div>
+        <div class="name">Tej Dalwadi</div>
+        <div class="subtitle">
+         Master's of Engineerng student-Aspiring Electrical & Instrumentation Engineer
+       
+
+      <div class="cta-buttons">
+               <button class="btn" type="button" onclick="window.location.href='mailto:tejrakeshbhai.dalwad@ucalgary.ca'">
+          <span>✉</span> Contact
+        </button>
+      </div>
+
+      <div class="side-section">
+        <div class="side-section-title">Table of Contents (12 entries)</div>
+        <ul class="toc">
+          <li><a href="#entry-1"><span class="index">1</span>Cover Page</a></li>
+          <li><a href="#entry-2"><span class="index">2</span>Introduction</a></li>
+          <li><a href="#entry-3"><span class="index">3</span>Engineering Ethics</a></li>
+          <li><a href="#entry-4"><span class="index">4</span>ENGG 687 Lecture</a></li>
+          <li><a href="#entry-5"><span class="index">5</span>Course Reading 1</a></li>
+          <li><a href="#entry-6"><span class="index">6</span>Course Reading 2</a></li>
+          <li><a href="#entry-7"><span class="index">7</span>Suggested Material 1</a></li>
+          <li><a href="#entry-8"><span class="index">8</span>Suggested Material 2</a></li>
+          <li><a href="#entry-9"><span class="index">9</span>Teamwork</a></li>
+          <li><a href="#entry-10"><span class="index">10</span>Looking Back 1</a></li>
+          <li><a href="#entry-11"><span class="index">11</span>Looking Back 2</a></li>
+          <li><a href="#entry-12"><span class="index">12</span>Your Choice</a></li>
+        </ul>
+        
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <header class="page-header">
+        <div class="page-header-text">
+          <div class="page-header-highlight">ENGG 687 · Ethics, Law, and the Engineering Profession</div>
+          <h1>Personal Portfolio</h1>
+          <p>
+            All about myself!
+          </p>
+        </div>
+      </header>
+
+      <section class="entry-grid">
+
+     <!-- 1. Cover Page -->
+<article class="entry" id="entry-1">
+  <div class="entry-inner">
+    <div>
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <h2>Quote which drives me</h2>
+          
+        </div>
+        <div class="entry-index">1</div>
+      </div>
+      <div class="entry-text">
+        
+        <p>
+<i>
+      "Problems or successes, they all are the results of our own actions.
+Karma. The philosophy of action is that no one else is the giver of peace or happiness.
+One’s own karma, one’s own actions are responsible to bring either happiness or success or whatever."
+</i>
+<p>
+Maharishi Mahesh Yogi
+        </p>
+      </div>
+    </div>
+    <div class="entry-graphic">
+      <div class="entry-graphic-accent"></div>
+      <figure>
+        <img src="images/entry-1-cover.jpg" alt="Cover page graphic preview" class="visible" />
+        <figcaption>
+          <strong>Photo credit:</strong> Photo by my colleague, 2023
+        </figcaption>
+      </figure>
+      <div class="entry-tags">
+        <span class="entry-tag-pill">Me at my job campus in India, one of the biggest Engineering company in India.</span>
+      </div>
+    </div>
+  </div>
+</article>
+
+        <!-- 2. Introduction -->
+        <article class="entry" id="entry-2">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+      
+                  <h2>Introduction · Who I am as an Engineer</h2>
+                  <p>
+                    A brief overview of my background and goals
+                  </p>
+                </div>
+                <div class="entry-index">2</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  I am currently an masters of engineering student interested in 
+                  <strong>Electrical</strong>, <strong>instrumentation</strong>, and <strong>networking</strong> engineering. Most of my
+                  technical experience comes from previous work experience, coursework, personal projects, and at my internship.
+                </p>
+                <p>
+                  My long term goal is to become an engineering leader and subject matter expert who can combine strong technical analysis with
+                  <strong>ethical judgment</strong> and lead teams in coming years. My strenghts are being an active learner, great at working in teams and having keen attention to detail. I have worked on multiple Elctrical design projects back in india and right working for Elctrical and instrumentation company as a Intern. I have learned one major thing that is best team work is the key to success. 
+
+ <p>
+
+One my biggest success is becoming a Gradute Student Ambasador for faculty of graduate studies.
+  
+                </p>
+               
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-2-intro.jpg" alt="Introduction graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Photo by me at my Intership workplace
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Engineering Ethics & Responsibility -->
+        <article class="entry" id="entry-3">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+         
+                  <h2>Engineering Ethics & Responsibility</h2>
+                  <p>
+                    Summarizing my biggest takeaway about ethics and professional responsibility from ENGG 687.
+                  </p>
+                </div>
+                <div class="entry-index">3</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  My biggest takeaway from ENGG 687 is that ethics in engineering mainly comes down to designing for safety right from the start. It should not be added later or treated like an extra step. I learned that being a responsible engineer means thinking ahead, looking for possible risks, and not being afraid to question assumptions. We always have to keep people’s safety and well-being above cost or any pressure we might face. This course showed me that safety is not only a technical thing, but also an ethical duty that needs clear communication and proper documentation.
+
+                </p>
+                <p>
+               Going into my career, I want to use these learnings by checking for hazards early, talking openly with my team, and making sure that every design choice considers how it affects people in the long run. ENGG 687 really taught me that safety must always come first.
+                </p>
+                
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-3-ethics.jpg" alt="Engineering ethics graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Explain whether this is your own diagram or adapted from a source.
+                </figcaption>
+              </figure>
+              <p class="hint">
+                <strong>Reflection hint:</strong> Re-read your notes on professional responsibility and add a specific example that changed your thinking.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. ENGG 687 Lectures -->
+        <article class="entry" id="entry-4">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+               
+                  <h2>One Lecture That Shifted My Perspective</h2>
+                  <p>
+                    Reflecting on a lecture topic Challenger Space Shuttle Disaster
+                  </p>
+                </div>
+                <div class="entry-index">4</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  One thing that really surprised me in the lecture was how much leadership, communication, and emotions can affect engineering ethics. I always thought failures were mostly technical, but the Challenger case showed that poor communication between different management levels and pressure to “just launch” were bigger issues than the O-ring itself. Seeing how Level 3 warnings never reached Level 1 and 2 managers really changed how I look at responsibility in organizations.
+                </p>
+                <p>
+                  To go deeper, I read more about how engineers tried to speak up but felt ignored, which made me think about how hard it can be to challenge decisions. It also made me question why safety concerns were treated like obstacles instead of priorities. This challenged my thinking, and now I see how important open discussion and honest reporting are in engineering teams.
+                </p>
+            
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-4-lecture.jpg" alt="Lecture reflection graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Include meme or slide attribution if not your own.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. Course Reading 1 -->
+        <article class="entry" id="entry-5">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+                
+                  <h2>Course Reading 1 · Reflection</h2>
+                  <p>
+                    Reflection on the video "What is Doughnut Economics?" - with Kate Raworth
+                  </p>
+                </div>
+                <div class="entry-index">5</div>
+              </div>
+              <div class="entry-text">
+                <p>
+               Learning about Doughnut Economics from "Design to cost" lecture made me think differently about engineering and ethics because it shows that good engineering is not just about growth, but about staying within environmental limits while still meeting people’s basic needs. It helped me realize that ethics is not only about rules, but also about designing systems that don’t harm communities or the planet in the long run.
+                </p>
+                <p>
+                  Comparing Canada and India, I noticed that Canada is generally closer to the “safe and just space” because it has stronger regulations, stable infrastructure, and more awareness of sustainability. India, on the other hand, is still working on balancing development with environmental protection, especially in fast-growing cities. I have personally seen projects in India where cost and speed were prioritized over long-term impacts. This always made me question if we could have designed things in a safer and more sustainable way.
+                </p>
+           
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-5-reading1.jpg" alt="Course reading 1 graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong>The Data is from https://doughnut-economy-fxs7576.netlify.app/
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. Course Reading 2 -->
+        <article class="entry" id="entry-6">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+                  
+                  <h2>Course Reading 2 · Reflection</h2>
+                  <p>
+                    Reflection on the video "The Iron Ring - What it Means to be a Canadian Engineer"
+                  </p>
+                </div>
+                <div class="entry-index">6</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  Learning about the Iron Ring Ceremony from "Iron Ring Ceremony" Lecture in Canada made me think about engineering ethics in a much deeper way. The ceremony shows that engineering is not just a technical job, but a responsibility to society. What stood out to me is that the ring acts as a constant reminder to make safe, honest, and thoughtful decisions, even when there is pressure or deadlines. The idea that engineers publicly commit to ethical practice made me reflect on how every design choice, even small ones, can impact people’s lives.
+                </p>
+                <p>
+                 I also found it interesting that the ceremony focuses on humility and duty rather than celebrating achievement. It made me realize that being a good engineer means accepting accountability and always putting safety first. This changed the way I think about my future career, reminding me to stay responsible and grounded in my decisions.
+                </p>
+        
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-6-reading2.jpg" alt="Course reading 2 graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Image from https://www.queensjournal.ca/queens-engineers-put-a-ring-on-it/ 
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. Suggested Material 1 -->
+        <article class="entry" id="entry-7">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+                 
+                  <h2>Additional Suggested Material 1</h2>
+                  <p>
+                    An external resource I found and how it connects to an ENGG 687 topic.
+                  </p>
+                </div>
+                <div class="entry-index">7</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  <strong>Course topic:</strong> Lecture Design for Cost<br />
+                  <strong>Suggested material:</strong> YouTube video: “How Amazon Tricks You With Their Own Products”.
+                </p>
+                <p>
+                  <strong>Brief summary:</strong> The video explains how Amazon uses its own platform to push Amazon Basics products by ranking them higher, even when they are more expensive and lower in quality than other brands. It shows how the company prioritizes its own profit instead of fairness or transparency.
+                </p>
+                <p>
+                  <strong>Reflection:</strong>This resource changed my thinking because it showed how big companies can ignore their own core values like “earn trust” and “insist on highest standards.” Watching how Amazon promotes its own products over better options made me rethink what ethical responsibility looks like in large tech systems. It also made me reflect on engineering decisions, how bias in algorithms, ranking systems, or product placement can affect millions of customers. I disagree strongly with Amazon’s strategy because a platform should highlight good products, not just its own.
+                </p>
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-7-suggested1.jpg" alt="Suggested material 1 graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Include link + “Screenshot by me” or similar, if applicable.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. Suggested Material 2 -->
+        <article class="entry" id="entry-8">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+                 
+                  <h2>Additional Suggested Material 2</h2>
+                  <p>
+                    An external resource I found and how it connects to an ENGG 687 topic.
+                  </p>
+                </div>
+                <div class="entry-index">8</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  <strong>Course topic:</strong> DEsign for Equity<br />
+                  <strong>Suggested material:</strong> American Factory by Netflix
+                </p>
+                <p>
+                  <strong>Brief summary:</strong> American Factory shows what happens when a Chinese company reopens a closed American factory and brings in its own management style. The film highlights the tension between two completely different work cultures—one focused on discipline and long hours, and the other focused on worker rights, safety, and fair treatment.
+                </p>
+                <p>
+                  <strong>Reflection:</strong> What stood out to me was that the biggest conflict wasn’t the factory technology but the values behind the work. The Chinese leadership emphasized loyalty, speed, and efficiency, while the American workers cared more about dignity, safety, and having a voice through unions. This made me think a lot about ethics because it shows how engineering decisions don’t exist in a vacuum—they are shaped by culture, expectations, and human needs. For me, the main lesson is that technical success means nothing if people feel unsafe or unheard. As a future engineer, I need to respect different perspectives and always put human values before efficiency.
+                </p>
+            
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-8-suggested2.jpg" alt="Suggested material 2 graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Series poster from Netflix
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9. Teamwork -->
+        <article class="entry" id="entry-9">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+                
+                  <h2>Teamwork & Project Process</h2>
+                  <p>
+                   My colleagues and team members from my last job in India.
+                  </p>
+                </div>
+                <div class="entry-index">9</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  My biggest takeaway from our project team was that <strong>Emotional Intelligence</strong> is just as important as
+                  technical skill. When teammates felt comfortable admitting uncertainty or raising concerns and commnicating them, our ideas
+                  improved and our ethical discussions became more honest.
+                </p>
+                <p>
+                  The hardest part was developing a team which should have no micromanaging at all and everyone is a individual contributor.
+The most rewarding part was seeing how our diverse perspectives created a richer final product than any
+                  of us could have made alone.                                  </p>
+            
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-9-teamwork.jpg" alt="Teamwork graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Photo from office annual function, 2024
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. Looking Back 1 -->
+        <article class="entry" id="entry-10">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+                 
+                  <h2>Looking Back 1 · Early Reflection</h2>
+                  <p>
+                    Re-visiting one of my early reflection quiz entries on ethical use of Gen AI.
+                  </p>
+                </div>
+                <div class="entry-index">10</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                 When I look back at my reflections, my relationship with Gen AI has been a mix of trial, frustration, and learning. I still remember writing, “Well from that day I decided not using any Gen AI again in solving any mathematical problems.” That came from a real experience where AI basically failed on complex electrical problems. It showed me that blind trust in AI is dangerous, especially in a maths-intensive field like electrical engineering.
+                </p>
+                <p>
+                  At the same time, I also wrote, “I have used AI for Job search, Writing resumes for me, Writing coffee chat messges for me, and much more.” So for me, ethical use of Gen AI is about where and how I use it. I avoid it for core learning and problem-solving, but I do use it for support tasks like formatting, emails, and understanding code, always trying to stay honest and transparent.
+                </p>
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-10-looking-back-1.jpg" alt="Looking back 1 graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Photo from https://litslink.com/blog/generative-ai-in-education-the-impact-ethical-considerations-and-use-cases
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11. Looking Back 2 -->
+        <article class="entry" id="entry-11">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+
+                  <h2>Looking Back 2 · A Turning Point</h2>
+                  <p>
+                    A second reflection from later in the course for Sustainable development goals,
+                  </p>
+                </div>
+                <div class="entry-index">11</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                  Reading my older answers, I can see how my thinking on sustainability and economics connected to engineering ethics over time. I once wrote, “What I understand from being responsible for economic interests as an engineer means to design and make a product based not only on safety but also considering the life expectancy of product and sustainability for the society.” That idea now reminds me directly of the Sustainable Development Goals.
+                </p>
+                <p>
+                  Another line that stands out is, “Doughnut economics supports this by encouraging designs that stay within ecological limits and meeting social needs.” This fits well with SDGs like responsible consumption, climate action, and sustainable cities. I also see how my value “Time is money” can support efficiency without cutting corners on safety. Overall, my reflections show a shift from just thinking about cost and performance to thinking about long-term impacts on people, resources, and the environment.
+                </p>
+             
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-11-looking-back-2.jpg" alt="Looking back 2 graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Photo from https://social.desa.un.org/2030agenda-sdgs
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <!-- 12. Your Choice -->
+        <article class="entry" id="entry-12">
+          <div class="entry-inner">
+            <div>
+              <div class="entry-header">
+                <div class="entry-title-group">
+       
+                  <h2>Your Choice · A Hobby or Experience</h2>
+                  <p>
+                    Travelling, Leading teams, and Gaming with friends.
+                  </p>
+                </div>
+                <div class="entry-index">12</div>
+              </div>
+              <div class="entry-text">
+                <p>
+                 I really enjoy travelling and going into new and uncertain situations, and somehow always finding a good time there. I’ve visited many places in India and here in Canada, and one thing I’ve found everywhere is friendship. Another important experience for me was teaching students. Seeing them improve in maths and grow in confidence felt really meaningful. From tutoring, I learned that no matter where you study or what method you use, the best understanding often comes from simple one-to-one conversations.
+
+
+                </p>
+                <p>
+                 I’m also an active gamer and play games like Clash of Clans and PUBG Mobile. One key thing gaming has taught me is that a team needs a clear purpose. When everyone works together toward a goal—whether it’s winning or completing a task—you can get the best out of the whole team.
+                </p>
+         
+              </div>
+            </div>
+            <div class="entry-graphic">
+              <div class="entry-graphic-accent"></div>
+              <figure>
+                <img src="images/entry-12-your-choice.jpg" alt="Your choice graphic preview" class="visible" />
+                <figcaption>
+                  <strong>Graphic credit:</strong> Photo by me from Barlow/maxbell LRT station, 2025
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    
+    </main>
+  </div>
+
+  <script>
+    // Smooth scrolling for in-page links
+    document.querySelectorAll('a[href^="#entry-"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const rect = target.getBoundingClientRect();
+          const offset = window.scrollY + rect.top - 16;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // “Download Resume” button helper note
+    document.querySelectorAll('.btn-primary').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        alert('Attach your resume PDF to this portfolio when submitting to D2L, or link it if you host this site online.');
+      });
+    });
+  </script>
+</body>
+</html>
